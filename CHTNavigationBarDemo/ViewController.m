@@ -21,6 +21,8 @@
 //
 //    [self cht_getBackView:self.navigationController.navigationBar color:[UIColor orangeColor]];
     
+    [self findHairlineImageViewUnder:self.navigationController.navigationBar].hidden = YES;
+    
     [self getBackView:self.navigationController.navigationBar Color:[UIColor orangeColor]];
     
 }
@@ -93,7 +95,19 @@
     
 }
 
-
+//递归寻找UINavigationBar下方的直线
+- (UIImageView *)findHairlineImageViewUnder:(UIView *)view {
+    if ([view isKindOfClass:UIImageView.class] && view.bounds.size.height <= 1.0) {
+        return (UIImageView *)view;
+    }
+    for (UIView *subview in view.subviews) {
+        UIImageView *imageView = [self findHairlineImageViewUnder:subview];
+        if (imageView) {
+            return imageView;
+        }
+    }
+    return nil;
+}
 
 
 - (void)didReceiveMemoryWarning {
