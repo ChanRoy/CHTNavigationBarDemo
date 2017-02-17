@@ -48,10 +48,17 @@
         if ([view isKindOfClass:NSClassFromString(@"_UIBarBackground")] ||
             [view isKindOfClass:NSClassFromString(@"UIVisualEffectView")]) {
             
-            view.backgroundColor = color;
             //color为透明颜色则隐藏遮盖层
             CGFloat alpha;
             [color getWhite:nil alpha:&alpha];
+            view.backgroundColor = color;
+            
+            if ([view isKindOfClass:NSClassFromString(@"UIVisualEffectView")]) {
+                
+                ((UIVisualEffectView *)view).alpha = alpha;
+                
+            }
+            
             view.hidden = alpha == 0 ? YES : NO;
         }
         for (UIView *subView in view.subviews) {
@@ -92,7 +99,7 @@
     [self findHairlineImageViewUnder:self.navigationController.navigationBar].hidden = YES;
     
     //改变UINavigationBar的颜色
-    [self cht_getBackView:self.navigationController.navigationBar color:[UIColor orangeColor]];
+    [self cht_getBackView:self.navigationController.navigationBar color:[[UIColor orangeColor] colorWithAlphaComponent:0.5]];
 }
 
 
