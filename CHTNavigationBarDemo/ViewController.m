@@ -18,14 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor grayColor];
-    
-    //隐藏UINavigationBar下方的直线
-    [self findHairlineImageViewUnder:self.navigationController.navigationBar].hidden = YES;
-    
-    //改变UINavigationBar的颜色
-    [self cht_getBackView:self.navigationController.navigationBar color:[UIColor orangeColor]];
 
 }
 
@@ -55,12 +47,9 @@
         // >=iOS10
         if ([view isKindOfClass:NSClassFromString(@"_UIBarBackground")] ||
             [view isKindOfClass:NSClassFromString(@"UIVisualEffectView")]) {
-            view.backgroundColor = color;
             
-            if ([color isEqual:[UIColor clearColor]]) {
-                
-                view.hidden = YES;
-            }
+            view.backgroundColor = color;
+            view.hidden = [color isEqual:[UIColor clearColor]] ? YES : NO;
         }
         for (UIView *subView in view.subviews) {
             
@@ -83,6 +72,24 @@
         }
     }
     return nil;
+}
+
+#pragma mark - btn events
+- (IBAction)clearColorClick:(id)sender {
+    
+    //隐藏UINavigationBar下方的直线
+    [self findHairlineImageViewUnder:self.navigationController.navigationBar].hidden = YES;
+    
+    //改变UINavigationBar的颜色
+    [self cht_getBackView:self.navigationController.navigationBar color:[UIColor clearColor]];
+}
+- (IBAction)orangeColorClick:(id)sender {
+    
+    //隐藏UINavigationBar下方的直线
+    [self findHairlineImageViewUnder:self.navigationController.navigationBar].hidden = YES;
+    
+    //改变UINavigationBar的颜色
+    [self cht_getBackView:self.navigationController.navigationBar color:[UIColor orangeColor]];
 }
 
 

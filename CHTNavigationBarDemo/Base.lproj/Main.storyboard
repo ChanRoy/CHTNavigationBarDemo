@@ -20,7 +20,29 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKa-5L-sY1">
+                                <rect key="frame" x="151" y="227" width="73" height="30"/>
+                                <state key="normal" title="ClearColor"/>
+                                <connections>
+                                    <action selector="clearColorClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ad8-k6-yvV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gij-a9-m0K">
+                                <rect key="frame" x="143" y="367" width="88" height="30"/>
+                                <state key="normal" title="OrangeColor"/>
+                                <connections>
+                                    <action selector="orangeColorClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oiI-Bb-41n"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Gij-a9-m0K" firstAttribute="centerX" secondItem="aKa-5L-sY1" secondAttribute="centerX" id="JWe-2z-wAV"/>
+                            <constraint firstItem="aKa-5L-sY1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="163" id="Lbi-Qq-0b2"/>
+                            <constraint firstItem="Gij-a9-m0K" firstAttribute="top" secondItem="aKa-5L-sY1" secondAttribute="bottom" constant="110" id="f3G-43-foR"/>
+                            <constraint firstItem="aKa-5L-sY1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lTy-iO-7hP"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xOR-Wq-4Mq"/>
                 </viewController>
