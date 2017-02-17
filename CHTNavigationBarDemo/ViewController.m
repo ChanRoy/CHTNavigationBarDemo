@@ -49,7 +49,10 @@
             [view isKindOfClass:NSClassFromString(@"UIVisualEffectView")]) {
             
             view.backgroundColor = color;
-            view.hidden = [color isEqual:[UIColor clearColor]] ? YES : NO;
+            //color为透明颜色则隐藏遮盖层
+            CGFloat alpha;
+            [color getWhite:nil alpha:&alpha];
+            view.hidden = alpha == 0 ? YES : NO;
         }
         for (UIView *subView in view.subviews) {
             
