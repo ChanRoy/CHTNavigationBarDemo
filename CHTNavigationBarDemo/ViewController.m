@@ -23,7 +23,7 @@
     
     [self findHairlineImageViewUnder:self.navigationController.navigationBar].hidden = YES;
     
-    [self getBackView:self.navigationController.navigationBar Color:[UIColor orangeColor]];
+    [self getBackView:self.navigationController.navigationBar Color:[UIColor clearColor]];
     
 }
 
@@ -31,18 +31,41 @@
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
-    if ([view isKindOfClass:NSClassFromString(@"_UIBarBackground")] ||
-        [view isKindOfClass:NSClassFromString(@"UINavigationBar")]) {
+#if ( defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 100000 )
+    //iOS10⬆️
     
+    if ([view isKindOfClass:NSClassFromString(@"_UIBarBackground")] || [view isKindOfClass:NSClassFromString(@"UIVisualEffectView")]) {
         view.backgroundColor = color;
-    }else{
         
+        if ([color isEqual:[UIColor clearColor]]) {
+            
+            view.hidden = YES;
+        }
+    }
+    
+    for (UIView *subView in view.subviews) {
+        
+        [self cht_getBackView:subView color:color];
+    }
+    self.navigationController.navigationBar.barTintColor = color;
+    
+#else
+    
+    //iOS10⬇️
+    if ([view isKindOfClass:NSClassFromString(@"_UINavigationBarBackground")]) {
+        
+        view.backgroundColor = color;
+    }else if ([view isKindOfClass:NSClassFromString(@"_UIBackdropView")]){
+        
+        //将_UINavigationBarBackground上面的遮罩层隐藏
         view.hidden = YES;
     }
     for (UIView *subView in view.subviews) {
         
-        [self getBackView:subView Color:color];
+        [self cht_getBackView:subView color:color];
     }
+    
+#endif
 }
 
 - (void)getBackView:(UIView *)View Color:(UIColor *)color{
@@ -52,12 +75,9 @@
     //[View isKindOfClass:NSClassFromString(@"_UINavigationBarBackground")]
     if ([View isKindOfClass:NSClassFromString(@"_UINavigationBarBackground")] || [View isKindOfClass:NSClassFromString(@"_UIBarBackground")] ) {
         //背景颜色设置
-        [UIView animateWithDuration:0.35 animations:^{
             
-            View.backgroundColor = color;
-            View.alpha = 1.0;
-            [UIView commitAnimations];
-        }];
+        View.backgroundColor = color;
+
     }else if ([View isKindOfClass:NSClassFromString(@"_UIBackdropView")]){
         
         //将_UINavigationBarBackground上面的遮罩层隐藏
@@ -80,10 +100,8 @@
 #endif
     
     for (UIView *view in View.subviews) {
-        [UIView animateWithDuration:0 animations:^{
-            [self getBackView:view Color:color];       //递归遍历NavBar视图
-            [UIView commitAnimations];
-        }];
+        
+        [self getBackView:view Color:color];       //递归遍历NavBar视图
         
     }
 #endif
