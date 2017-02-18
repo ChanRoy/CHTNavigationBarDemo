@@ -1,11 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12106.1" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IqX-FH-yQY">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IqX-FH-yQY">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12074.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,25 +19,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKa-5L-sY1">
-                                <rect key="frame" x="151" y="227" width="73" height="30"/>
                                 <state key="normal" title="ClearColor"/>
                                 <connections>
                                     <action selector="clearColorClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ad8-k6-yvV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gij-a9-m0K">
-                                <rect key="frame" x="143" y="367" width="88" height="30"/>
                                 <state key="normal" title="OrangeColor"/>
                                 <connections>
                                     <action selector="orangeColorClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oiI-Bb-41n"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pk1-KB-sKL">
+                                <state key="normal" title="AlphaColor"/>
+                                <connections>
+                                    <action selector="alphaColorClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1dz-fV-dLv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Pk1-KB-sKL" firstAttribute="top" secondItem="Gij-a9-m0K" secondAttribute="bottom" constant="40" id="B08-Ex-E8Q"/>
                             <constraint firstItem="Gij-a9-m0K" firstAttribute="centerX" secondItem="aKa-5L-sY1" secondAttribute="centerX" id="JWe-2z-wAV"/>
                             <constraint firstItem="aKa-5L-sY1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="163" id="Lbi-Qq-0b2"/>
-                            <constraint firstItem="Gij-a9-m0K" firstAttribute="top" secondItem="aKa-5L-sY1" secondAttribute="bottom" constant="110" id="f3G-43-foR"/>
+                            <constraint firstItem="Gij-a9-m0K" firstAttribute="top" secondItem="aKa-5L-sY1" secondAttribute="bottom" constant="44" id="f3G-43-foR"/>
+                            <constraint firstItem="Pk1-KB-sKL" firstAttribute="centerX" secondItem="Gij-a9-m0K" secondAttribute="centerX" id="hq6-Ki-1fo"/>
                             <constraint firstItem="aKa-5L-sY1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lTy-iO-7hP"/>
                         </constraints>
                     </view>
