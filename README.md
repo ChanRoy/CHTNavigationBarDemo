@@ -24,6 +24,16 @@ UINavigationBar 显示、隐藏、改变颜色、去掉底部的直线
 ## 实现过程
 - 我们先观察下**UINavigationBar**的视图层级关系：
 
+留意到不同系统的UINavigationBar的视图层级关系并不相同，具体如下。
+
+iOS10以下UINavigationBar视图层级：
+
+![](https://github.com/ChanRoy/CHTNavigationBarDemo/blob/master/UINavigationBar视图层级(iOS10以下).png)
+
+iOS10以上UINavigationBar视图层级：
+
+![](https://github.com/ChanRoy/CHTNavigationBarDemo/blob/master/UINavigationBar视图层级(iOS10以上).png)
+
 - 先解决**UINavigationBar**下方的直线：
 
 由上图可以看出，不管iOS几，直线都是一个**UIImageView**。我们通过递归方法找到它，将它隐藏即可。
